@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../validation";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
@@ -18,9 +18,11 @@ const initialState = {
   gender: "",
 };
 
-const RegistrationForm = ({toast}) => {
+const RegistrationForm = ({ toast }) => {
   const [ageError, setAgeError] = useState("");
   const [addUser, { isLoading }] = useAddUserMutation();
+
+  const navigate = useNavigate();
 
   const registration = async () => {
     const signUpMutation = await addUser({
@@ -34,7 +36,7 @@ const RegistrationForm = ({toast}) => {
       gender: formik.values.gender,
     });
 
-    if(signUpMutation?.data){
+    if (signUpMutation?.data) {
       toast.success(signUpMutation?.data?.message, {
         position: "top-right",
         autoClose: 3000,
@@ -42,8 +44,11 @@ const RegistrationForm = ({toast}) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
-    }else if(signUpMutation?.error){
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } else if (signUpMutation?.error) {
       toast.error(signUpMutation?.error?.data?.message, {
         position: "top-right",
         autoClose: 3000,
@@ -51,9 +56,8 @@ const RegistrationForm = ({toast}) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     }
-
   };
 
   const formik = useFormik({
@@ -76,6 +80,8 @@ const RegistrationForm = ({toast}) => {
       }
       console.log("submitted");
       registration();
+      formik.resetForm();
+      setAgeError("");
     },
   });
   //   console.log(formik);

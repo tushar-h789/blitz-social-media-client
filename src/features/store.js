@@ -9,6 +9,8 @@ const store = configureStore({
         registration: authSlice
     },
 
+    devTools: import.meta.env.MODE !== 'production',
+
     middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(authApi.middleware)
 })
 
