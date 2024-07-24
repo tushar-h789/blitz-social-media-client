@@ -3,8 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { logIn } from "../../validation";
 import { useLoggedInUserMutation } from "../../features/api/authApi";
-import {loggedInUsers } from '../../features/users/authSlice'
-import { useDispatch } from "react-redux";
 
 const initialState = {
   email: "",
@@ -14,13 +12,13 @@ const initialState = {
 const LoginForm = ({ toast }) => {
   const [loggedInUser, { isLoading }] = useLoggedInUserMutation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const loginUser = async () => {
     const loginMutation = await loggedInUser({
       email: formik.values.email,
       password: formik.values.password,
     });
+    
     if (loginMutation?.error) {
       toast.error(loginMutation?.error?.data?.message, {
         position: "top-right",
@@ -32,8 +30,7 @@ const LoginForm = ({ toast }) => {
       });
       return;
     }
-    const { message, ...rest } = loginMutation.data;
-    dispatch(loggedInUsers(rest))
+    
     navigate("/");
   };
 

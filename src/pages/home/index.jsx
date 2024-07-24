@@ -1,4 +1,5 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "react-helmet-async";
+import PostHome from "../../components/HomeComponents/PostHome";
 
 const Home = () => {
   return (
@@ -6,9 +7,11 @@ const Home = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <div>Home</div>
-    </>
-  )
-}
+      <PostHome />
 
-export default Home
+      
+    </>
+  );
+};
+
+export default Home;
