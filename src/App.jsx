@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import RootLayout from "./components/RootLayout";
+import "swiper/css"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
