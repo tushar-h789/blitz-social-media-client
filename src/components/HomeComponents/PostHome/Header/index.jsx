@@ -32,7 +32,7 @@ const Header = () => {
         }
       </div>
 
-      <div className="w-[20%] lg:w-[40%] relative">
+      <div className="w-[20%] xl:w-[40%] relative lg:mr-28 xl:-right-16">
         <div
           className="flex w-10 h-10 lg:w-[300px] lg:h-auto ml-auto lg:ml-0 items-center justify-center border border-secondary_bg lg:py-2 lg:px-4 rounded-full gap-x-2 relative"
           onClick={() => setShow(true)}
@@ -47,7 +47,7 @@ const Header = () => {
             />
           </div>
         </div>
-        <div className="shadow-md absolute -top-2 left-0" ref={clickOutSide}>
+        <div className="shadow-md absolute -top-2 -right-2 lg:left-0" ref={clickOutSide}>
           {show && <SearchBox />}
         </div>
       </div>

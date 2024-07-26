@@ -7,11 +7,14 @@ const SettingOptions = () => {
   const [visible, setVisible] = useState(false);
 
   if (visible) {
-    return <DisplayMode setVisible={setVisible} />;
+   return(
+    <DisplayMode setVisible={setVisible}/>
+   )
   }
 
   return (
-    <div className="bg-white rounded-md shadow-md w-[300px] p-4 absolute left-0">
+    <div className="lg:left-0 xl:top-16 absolute -left-2/4 top-0 -translate-x-2/4 lg:translate-x-0">
+      <div className="bg-white rounded-md shadow-md w-[300px] p-4 ">
       <ul>
         <li
           className="flex items-center gap-x-2 group cursor-pointer mb-5"
@@ -37,6 +40,7 @@ const SettingOptions = () => {
           </div>
         </li>
       </ul>
+    </div>
     </div>
   );
 };

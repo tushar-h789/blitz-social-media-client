@@ -10,7 +10,7 @@ const SearchBox = () => {
   }, []);
 
   return (
-    <div className="h-[400px] w-[300px] bg-white box-border shadow-md rounded-md min-h-[400px] max-h-[70vh] p-2">
+    <div className="h-[400px] w-[330px] bg-white box-border shadow-md rounded-md min-h-[400px] max-h-[70vh] p-2">
       <div className="flex items-center border border-secondary_bg  py-2 px-4 rounded-full gap-x-2">
         {showSearchIcon && (
           <div

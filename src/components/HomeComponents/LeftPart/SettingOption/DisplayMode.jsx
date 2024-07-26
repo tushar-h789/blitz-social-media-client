@@ -3,7 +3,7 @@ import { Moon } from "../../../../assets/svg/Moon";
 
 const DisplayMode = ({ setVisible }) => {
   return (
-    <div className="bg-white rounded-md shadow-md w-[300px] p-4 absolute top-16 left-0">
+    <div className="bg-white rounded-md shadow-md w-[300px] p-4 absolute top-0 xl:top-20 lg:left-0 -left-2/4 -translate-x-2/4 lg:translate-x-0">
       <div
         className="flex items-center gap-x-3 mb-4 hover:text-secondary_color transition-all ease-linear duration-75 cursor-pointer"
         onClick={() => setVisible(false)}
