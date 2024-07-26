@@ -23,7 +23,6 @@ const SearchBox = () => {
         <div>
           <input
             type="text"
-            placeholder="Search"
             className="focus:outline-none font-gilroyNormal text-secondary_bg"
             ref={inputBox}
             onFocus={() => setShowSearchIcon(false)}
