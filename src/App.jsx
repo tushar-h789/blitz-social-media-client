@@ -10,6 +10,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import RootLayout from "./components/RootLayout";
 import "swiper/css"
+import CreatePostPopUp from "./components/HomeComponents/PostHome/createPostPopup";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
+    <CreatePostPopUp/>
       <RouterProvider router={router} />
     </>
   );
