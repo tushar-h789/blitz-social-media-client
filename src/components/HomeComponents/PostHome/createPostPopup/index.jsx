@@ -1,11 +1,14 @@
-import EmojiPicker from "emoji-picker-react";
 import { CircleCloseIcon } from "../../../../assets/svg/CircleClose";
 import AddPost from "./AddPost";
-import { useState } from "react";
-import Feeling from "../../../../assets/svg/Feeling";
+import { useRef, useState } from "react";
+import EmojiPickers from "./EmojiPickers";
+import ImageViewer from "./ImageViewer";
 
 const CreatePostPopUp = () => {
-  const [picker, setPicker] = useState(false);
+  const [text, setText] = useState("");
+  const [show, setShow] = useState(true);
+  const textRef = useRef();
+
   return (
     <div className="absolute top-0 left-0 flex justify-center items-center bg-blur w-full h-screen z-20">
       <div className="w-[35%] bg-white shadow-lg rounded-lg">
@@ -28,30 +31,23 @@ const CreatePostPopUp = () => {
             </div>
           </div>
 
-          <div className="mt-5">
-            <textarea
-              placeholder="What's up, say something"
-              className="w-full min-h-24 outline-none p-2 font-gilroyNormal text-base"
-            />
-          </div>
-
-          <div className="flex justify-between mb-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-cyan-100 to-pink-100 cursor-pointer"></div>
-            <div className="mr-5 cursor-pointer relative">
-              <div onClick={()=>setPicker(prev =>!prev)}>
-              <Feeling />
+          {!show ? (
+            <>
+              <EmojiPickers text={text} setText={setText} textRef={textRef} />
+              <div>
+                <AddPost />
               </div>
-              {picker && (
-                <div className="absolute -top-[465px] -right-8">
-                  <EmojiPicker />
-                </div>
-              )}
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              <ImageViewer text={text} setText={setText} textRef={textRef}/>
+              <div>
+                <AddPost />
+              </div>
 
-          <div>
-            <AddPost />
-          </div>
+            </>
+          )}
+
           <div className="mt-2">
             <button className="w-full bg-white-100 hover:bg-black hover:text-white transition-all ease-linear duration-100 p-2 font-gilroySemiBold text-black text-base rounded-md">
               Post
