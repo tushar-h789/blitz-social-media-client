@@ -38,7 +38,7 @@ export default function EmojiPickers({ text, setText, textRef, changePart }) {
             <Feeling />
           </div>
           {picker && (
-            <div className="absolute -top-[465px] -right-8">
+            <div className="absolute top-0 right-8 z-10">
               <EmojiPicker onEmojiClick={handleEmoji} />
             </div>
           )}

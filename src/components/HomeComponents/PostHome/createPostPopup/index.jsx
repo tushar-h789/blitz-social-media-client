@@ -6,7 +6,8 @@ import ImageViewer from "./ImageViewer";
 
 const CreatePostPopUp = () => {
   const [text, setText] = useState("");
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [image, setImage] = useState([]);
   const textRef = useRef();
 
   return (
@@ -35,16 +36,22 @@ const CreatePostPopUp = () => {
             <>
               <EmojiPickers text={text} setText={setText} textRef={textRef} />
               <div>
-                <AddPost />
+                <AddPost setShow={setShow} show={show} />
               </div>
             </>
           ) : (
             <>
-              <ImageViewer text={text} setText={setText} textRef={textRef}/>
+              <ImageViewer
+                text={text}
+                setText={setText}
+                textRef={textRef}
+                image={image}
+                setImage={setImage}
+                setShow={setShow}
+              />
               <div>
-                <AddPost />
+                <AddPost setShow={setShow} show={show} />
               </div>
-
             </>
           )}
 
